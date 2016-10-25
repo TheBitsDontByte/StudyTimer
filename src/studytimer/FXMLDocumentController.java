@@ -50,8 +50,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button resetBtn;
     
-    private Scanner scan;
-    private File timeFile;
     private FileWriter fwOut;
 
     private Integer readInt;
@@ -63,6 +61,9 @@ public class FXMLDocumentController implements Initializable {
     private String startFormated;
     
     private String sessionDate;
+    
+    private String logFile;
+    private String timeTotalsFile;
     //Need new time for current date
     //Need to record each session ... keep pause ?
     //Need to write to a different file (easeist)
@@ -89,11 +90,11 @@ public class FXMLDocumentController implements Initializable {
             updateLabels();
         }
         else if (event.getSource()==closeBtn){
-            fwOut = new FileWriter(timeFile);
+            fwOut = new FileWriter(timeTotalsFile);
             fwOut.write(totalTime.toString()+"\n");
             fwOut.write(startFormated);
             fwOut.close();
-            try(FileWriter logOut = new FileWriter("log file.txt", true)){
+            try(FileWriter logOut = new FileWriter(logFile, true)){
                 logOut.write("Date: " + this.sessionDate + "\tDuration: "
                         + sessionFormated +"\n");
             }catch(Exception e){
@@ -101,42 +102,26 @@ public class FXMLDocumentController implements Initializable {
             }
             Platform.exit();
         }
-        
     }
-       
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        isOn = false;
+        sessionTime = 0;
+        sessionDate = getDate();
+        logFile = "log file.txt";
+        timeTotalsFile = "time";
         //Change this to create one if not here (easy)
-        timeFile = new File("time");
+        //Will prob not work well, if one isnt good ....
         
-        try {
-            scan = new Scanner(timeFile);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        try{
-            readInt = Integer.parseInt(scan.nextLine());
-        }
-        catch (Exception e){
+        try(Scanner fileIn = new Scanner(new File(timeTotalsFile))){
+            readInt = Integer.parseInt(fileIn.nextLine());
+            startFormated = fileIn.nextLine();
+        } catch (Exception e) {
             readInt = 0;
-        }
-
-        try{
-            startFormated = scan.nextLine();
-        }
-        catch (Exception e){
             startFormated = getDate();
         }
         
-        sessionDate = getDate();
-        
-        scan.close();
-        
-        isOn = false;
-        
-        sessionTime = 0;
         totalTime = sessionTime + readInt;
         updateLabels();
         setupTimer();
@@ -166,7 +151,6 @@ public class FXMLDocumentController implements Initializable {
     }
     
     public void updateLabels(){
-       
         sessionFormated = "" + sessionTime/3600 + " hours "
             + (sessionTime/60)%60 + " minutes " + sessionTime%60
             + " seconds";
