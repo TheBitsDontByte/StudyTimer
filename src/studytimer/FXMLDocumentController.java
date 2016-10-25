@@ -94,7 +94,7 @@ public class FXMLDocumentController implements Initializable {
             fwOut.write(startFormated);
             fwOut.close();
             try(FileWriter logOut = new FileWriter("log file.txt", true)){
-                logOut.write("Date: " + sessionDate + "\tDuration: "
+                logOut.write("Date: " + sessionFormated + "\tDuration: "
                         + sessionTime);
             }catch(Exception e){
                 System.err.println(e);
