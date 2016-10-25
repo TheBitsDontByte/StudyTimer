@@ -62,6 +62,11 @@ public class FXMLDocumentController implements Initializable {
     private String totalFormated;
     private String startFormated;
     
+    private String sessionDate;
+    //Need new time for current date
+    //Need to record each session ... keep pause ?
+    //Need to write to a different file (easeist)
+    
     private boolean isOn;
     private Timeline tick;
     
@@ -88,6 +93,12 @@ public class FXMLDocumentController implements Initializable {
             fwOut.write(totalTime.toString()+"\n");
             fwOut.write(startFormated);
             fwOut.close();
+            try(FileWriter logOut = new FileWriter("log file.txt", true)){
+                logOut.write("Date: " + sessionDate + "\tDuration: "
+                        + sessionTime);
+            }catch(Exception e){
+                System.err.println(e);
+            }
             Platform.exit();
         }
         
@@ -118,6 +129,8 @@ public class FXMLDocumentController implements Initializable {
         catch (Exception e){
             startFormated = getDate();
         }
+        
+        sessionDate = getDate();
         
         scan.close();
         
