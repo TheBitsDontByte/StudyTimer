@@ -94,8 +94,8 @@ public class FXMLDocumentController implements Initializable {
             fwOut.write(startFormated);
             fwOut.close();
             try(FileWriter logOut = new FileWriter("log file.txt", true)){
-                logOut.write("Date: " + sessionFormated + "\tDuration: "
-                        + sessionTime);
+                logOut.write("Date: " + this.sessionDate + "\tDuration: "
+                        + sessionFormated +"\n");
             }catch(Exception e){
                 System.err.println(e);
             }
@@ -108,7 +108,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Change this to create one if not here (easy)
-        timeFile = new File("time.txt");
+        timeFile = new File("time");
         
         try {
             scan = new Scanner(timeFile);
