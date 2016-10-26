@@ -15,13 +15,11 @@ import javafx.scene.control.Button;
 
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 
 import javafx.animation.Timeline;
@@ -29,10 +27,6 @@ import javafx.animation.TimelineBuilder;
 import javafx.application.Platform;
 import javafx.util.Duration;
 
-/**
- *
- * @author Chris
- */
 public class FXMLDocumentController implements Initializable {
     
     @FXML
@@ -64,9 +58,6 @@ public class FXMLDocumentController implements Initializable {
     
     private String logFile;
     private String timeTotalsFile;
-    //Need new time for current date
-    //Need to record each session ... keep pause ?
-    //Need to write to a different file (easeist)
     
     private boolean isOn;
     private Timeline tick;
