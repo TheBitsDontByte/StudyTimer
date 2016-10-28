@@ -44,8 +44,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button resetBtn;
     
-    private FileWriter fwOut;
-
+    private FileWriter writeTime;
+    private FileWriter writeLog;
+    
     private Integer readInt;
     private Integer totalTime;
     private Integer sessionTime;
@@ -56,8 +57,8 @@ public class FXMLDocumentController implements Initializable {
     
     private String sessionDate;
     
-    private String logFile;
-    private String timeTotalsFile;
+    private String logFile = "log file.txt";
+    private String timeTotalsFile = "time";
     
     private boolean isOn;
     private Timeline tick;
@@ -75,24 +76,38 @@ public class FXMLDocumentController implements Initializable {
             startBtn.requestFocus();
         }
         else if(event.getSource() ==resetBtn){
+            writeFiles("Timer Reset, " + this.sessionDate + " - " + 
+                    this.getDate() + ", " + this.totalFormated + "\n");
             sessionTime = 0;
             totalTime = 0;
             startFormated = getDate();
             updateLabels();
         }
         else if (event.getSource()==closeBtn){
-            fwOut = new FileWriter(timeTotalsFile);
-            fwOut.write(totalTime.toString()+"\n");
-            fwOut.write(startFormated);
-            fwOut.close();
-            try(FileWriter logOut = new FileWriter(logFile, true)){
-                logOut.write("Date: " + this.sessionDate + "\tDuration: "
-                        + sessionFormated +"\n");
-            }catch(Exception e){
-                System.err.println(e);
-            }
+            writeFiles("");
+            
             Platform.exit();
         }
+    }
+    
+    public void writeFiles(String msg) throws IOException{
+        writeLog = new FileWriter(logFile, true);
+        if (sessionTime > 0)
+        {
+            writeLog.write("Date: " + this.sessionDate + "\tDuration: "
+                        + sessionFormated + "\n" + msg);
+            writeLog.close();
+        }else
+        {
+            writeLog.write(msg);
+            writeLog.close();
+        }
+        writeTime = new FileWriter(timeTotalsFile);
+        writeTime.write(totalTime.toString()+"\n");
+        writeTime.write(startFormated);
+        writeTime.close();
+        
+        
     }
     
     @Override
@@ -100,10 +115,6 @@ public class FXMLDocumentController implements Initializable {
         isOn = false;
         sessionTime = 0;
         sessionDate = getDate();
-        logFile = "log file.txt";
-        timeTotalsFile = "time";
-        //Change this to create one if not here (easy)
-        //Will prob not work well, if one isnt good ....
         
         try(Scanner fileIn = new Scanner(new File(timeTotalsFile))){
             readInt = Integer.parseInt(fileIn.nextLine());
@@ -137,7 +148,6 @@ public class FXMLDocumentController implements Initializable {
         long milliTime = System.currentTimeMillis();
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy");
         Date resultdate = new Date(milliTime);
-        System.out.println(sdf.format(resultdate));
         return sdf.format(resultdate);
     }
     
