@@ -57,8 +57,12 @@ public class FXMLDocumentController implements Initializable {
     
     private String sessionDate;
     
-    private String logFile = "log file.txt";
-    private String timeTotalsFile = "time";
+    private final String logFile = 
+            "./timerdata/log file.txt";
+            //"C:\\Users\\Chris\\Desktop\\Program\\TimerData\\log file.txt";
+    private final String timeTotalsFile = 
+            "./timerdata/time";
+            //"C:\\Users\\Chris\\Desktop\\Program\\TimerData\\time";
     
     private boolean isOn;
     private Timeline tick;
