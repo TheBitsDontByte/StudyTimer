@@ -1,1 +1,13 @@
-Date: Oct 29,2016	Duration: 0 hours 0 minutes 1 seconds
+Date: Oct 29,2016	Duration: 0 hours 0 minutes 18 seconds
+Timer Reset, Oct 29,2016 - Oct 29,2016, 0 hours 0 minutes 26 seconds
+Date: Oct 29,2016	Duration: 0 hours 1 minutes 29 seconds
+Date: Oct 30,2016	Duration: 0 hours 0 minutes 21 second
+Date: Nov 01,2016	Duration: 0 hours 0 minutes 3 seconds
+Timer Reset, Oct 29,2016 - Nov 01,2016, 0 hours 2 minutes 17 seconds
+Timer Reset, Nov 01,2016 - Nov 01,2016, 0 hours 0 minutes 0 seconds
+Date: Nov 01,2016	Duration: 0 hours 0 minutes 6 seconds
+Timer Reset, Nov 01,2016 - Nov 01,2016, 0 hours 0 minutes 6 seconds
+Date: Nov 01,2016	Duration: 0 hours 0 minutes 30 seconds
+
+Timer Reset, Nov 01,2016 - Nov 01,2016, 0 hours 0 minutes 30 seconds
+Date: Nov 01,2016	Duration: 0 hours 0 minutes 8 seconds
