@@ -59,7 +59,9 @@ public class FXMLDocumentController implements Initializable {
     private String totalFormated;
     private String startFormated;
     
+    
     private String sessionDate;
+    private int numOfDays;
     
     //this is iff, depending on where the "current directory" is ... ok for me
     private final String logFile = 
@@ -74,6 +76,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
+        getDays();
         if (event.getSource()==startBtn && isOn == false){
             tick.play();
             isOn = true;
@@ -90,6 +93,7 @@ public class FXMLDocumentController implements Initializable {
             sessionTime = 0;
             totalTime = 0;
             startFormated = getDate();
+            numOfDays = getDays();
             updateLabels();
         }
         else if (event.getSource()==closeBtn){
@@ -212,6 +216,7 @@ public class FXMLDocumentController implements Initializable {
         sessionTime = 0;
         sessionDate = getDate();
         
+        
         try(Scanner fileIn = new Scanner(new File(timeTotalsFile))){
             readInt = Integer.parseInt(fileIn.nextLine());
             startFormated = fileIn.nextLine();
@@ -221,6 +226,7 @@ public class FXMLDocumentController implements Initializable {
         }
         
         totalTime = sessionTime + readInt;
+        numOfDays = getDays();
         updateLabels();
         setupTimer();
         try{
@@ -265,7 +271,46 @@ public class FXMLDocumentController implements Initializable {
         updateFormatedTimes();
         labelSession.setText(sessionFormated);
         labelTotal.setText(totalFormated);
-        labelDate.setText(startFormated);
+        if (numOfDays > 1)
+            labelDate.setText(startFormated + " (" + numOfDays + " days)");
+        else 
+            labelDate.setText(startFormated + " (" + numOfDays + " day)");
+    }
+    
+    private int getDays(){
+        numOfDays = 0;
+        
+        String currentMonth = startFormated.substring(0,3);
+        String startDay = startFormated.substring(4, 6);
+        
+        String currentDay = getDate().substring(4, 6);
+        
+        int startDayInt = Integer.parseInt(startDay);
+        int currentDayInt = Integer.parseInt(currentDay);
+        
+        if (currentDayInt < startDayInt) {
+            switch (currentMonth) {
+                case "Jan":
+                case "Mar":
+                case "May":
+                case "Jul":
+                case "Aug":
+                case "Oct":
+                case "Dec":
+                    numOfDays = 31-startDayInt+1+currentDayInt;
+                    break;
+                case "Feb":
+                    numOfDays = 28-startDayInt+1+currentDayInt;
+                    break;
+                default:
+                    numOfDays = 30-startDayInt+1+currentDayInt;
+            }
+        }
+            
+        else
+            numOfDays = currentDayInt - startDayInt + 1;
+            
+        return numOfDays;
     }
 }
 
