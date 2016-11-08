@@ -88,13 +88,16 @@ public class FXMLDocumentController implements Initializable {
             startBtn.requestFocus();
         }
         else if(event.getSource() ==resetBtn){
-            writeFiles("\nTimer Reset, " + this.startFormated + " - " + 
-                    this.getDate() + ", " + this.totalFormated + "\n");
-            sessionTime = 0;
-            totalTime = 0;
-            startFormated = getDate();
-            numOfDays = getDays();
-            updateLabels();
+            //If no session time dont do anything;
+            if (sessionTime > 0) {
+                writeFiles("\nTimer Reset, " + this.startFormated + " - " + 
+                        this.getDate() + ", " + this.totalFormated + "\n");
+                sessionTime = 0;
+                totalTime = 0;
+                startFormated = getDate();
+                numOfDays = getDays();
+                updateLabels();
+            }
         }
         else if (event.getSource()==closeBtn){
             writeFiles("");
@@ -225,7 +228,13 @@ public class FXMLDocumentController implements Initializable {
             startFormated = getDate();
         }
         
+        
+        
         totalTime = sessionTime + readInt;
+        
+        //If there is no time, set sessionDate to todays date
+        if (totalTime <= 0)
+            startFormated = getDate();
         numOfDays = getDays();
         updateLabels();
         setupTimer();
