@@ -89,7 +89,7 @@ public class FXMLDocumentController implements Initializable {
         }
         else if(event.getSource() ==resetBtn){
             //If no session time dont do anything;
-            if (sessionTime > 0) {
+            if (totalTime > 0) {
                 writeFiles("\nTimer Reset, " + this.startFormated + " - " + 
                         this.getDate() + ", " + this.totalFormated + "\n");
                 sessionTime = 0;
