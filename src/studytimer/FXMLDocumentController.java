@@ -91,13 +91,14 @@ public class FXMLDocumentController implements Initializable {
             //If no session time dont do anything;
             if (totalTime > 0) {
                 writeFiles("\nTimer Reset, " + this.startFormated + " - " + 
-                        this.getDate() + ", " + this.totalFormated + "\n");
+                        this.getDate() + ", " + this.totalFormated);
                 sessionTime = 0;
                 totalTime = 0;
                 startFormated = getDate();
                 numOfDays = getDays();
                 updateLabels();
             }
+            
         }
         else if (event.getSource()==closeBtn){
             writeFiles("");
@@ -111,19 +112,15 @@ public class FXMLDocumentController implements Initializable {
         int previousTime = 0;
         
         if (lastLine.contains("Duration")){
-            System.out.println("It has duration");
             //I need to now read the data
             String[] fileInputs = lastLine.split(":");
             String[] numbers = fileInputs[2].split("[a-z ]+");
-            /*
-            for (String s : numbers)
-                System.out.println(s); 
-            System.out.println("Size: " + numbers.length);
-            */
+            
             previousTime += Integer.parseInt(numbers[1]) * 3600;
             previousTime += Integer.parseInt(numbers[2]) * 60;
             previousTime += Integer.parseInt(numbers[3]);
         }
+        
         return previousTime;
     }
     
@@ -136,6 +133,19 @@ public class FXMLDocumentController implements Initializable {
         return lastLoggedDate;
     }
     
+    public String getLastLoggedLine() throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(logFile));
+        String last = br.readLine();
+        br.close();
+        System.out.println(last);
+        
+        if (last == null)
+            return "";
+        return last;
+    }
+    
+        //NO LONGER USED /ORDER IS REVERSED    
+/*    
     public String getLastLoggedLine() throws IOException{
         BufferedReader readLog = new BufferedReader(new FileReader(logFile));
         String lastLine = "";
@@ -151,62 +161,54 @@ public class FXMLDocumentController implements Initializable {
         }
         return lastLine;
     }
-    
-    public void readLogIntoList(List<String> allLines) throws IOException { 
-            
-        String temp;
-        
-        BufferedReader readAll = new BufferedReader
-                    (new FileReader(logFile));
-        while (true){
-            temp = readAll.readLine();
-            if (temp == null)
-                break;
-            allLines.add(temp);
-        }
-    }
+ */   
+   
     
     public void writeFiles(String msg) throws IOException{
-        int sameDayTime = parseTimeFromLog();
-        //Now, if the above has anything
-        //updateFormatedTime();
-        writeLog = new FileWriter(logFile, true);
-        List<String> allLines = new ArrayList<String>();
+        //Get time if same day and last logged date
         String lastLoggedDate = this.parseDateFromLog();
-        System.out.println("LogTime: " + sameDayTime);
-        System.out.println("LogDate: " + lastLoggedDate);
-        System.out.println("SessionTime: " + sessionTime);
+        int sameDayTime = parseTimeFromLog();
         
+        //Get all the lines in logFile
+        List<String> allLines = new ArrayList<>();
+        readLogIntoList(allLines);
+        
+        //Open the reader, no appending
+        writeLog = new FileWriter(logFile, false);
+        
+        
+        //Same day, diff session, add times together
         if (lastLoggedDate.equals(this.getDate()) && sessionTime > 0)
         {
-            readLogIntoList(allLines);
-        
             if (sameDayTime > 0){
-                System.out.println("HERHEHREH");
                 sessionTime += sameDayTime;
                 updateFormatedTimes();
-                writeLog = new FileWriter(logFile, false);
-                for (int i = 0; i < allLines.size()-1; i++)
-                {
-                    System.out.println(allLines.get(i));
-                    writeLog.write(allLines.get(i) + "\n");
-                }
-                writeLog.write("Date: " + this.sessionDate + "\tDuration: "
-                        + sessionFormated + "\n" + msg);
-                writeLog.close();
+                //Replace most recent line with updated version
+                allLines.set(0, "Date: " + this.sessionDate + "\tDuration: "
+                        + sessionFormated);
             }
         }
+        //Diff day, but active session -- Write new time
         else if (sessionTime > 0)
         {    
-            writeLog.write("Date: " + this.sessionDate + "\tDuration: "
-                    + sessionFormated + "\n" + msg);
-            writeLog.close();
+            //Add a new line, for a new day
+            allLines.add(0, "Date: " + this.sessionDate + "\tDuration: "
+                    + sessionFormated);
         }
+        //In the case of reset no time, simply close 
         else
         {
-            writeLog.write(msg);
-            writeLog.close();
+            System.out.println("Reset and close ?: " + msg);
+            if (msg.length() > 0)
+                allLines.add(0, msg);
         }
+        //always write
+        for (int i = 0; i < allLines.size(); i++) {
+            writeLog.write(allLines.get(i) + "\n");
+        }
+        writeLog.close();
+
+        
         writeTime = new FileWriter(timeTotalsFile);
         writeTime.write(totalTime.toString()+"\n");
         writeTime.write(startFormated);
@@ -245,6 +247,21 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+     public void readLogIntoList(List<String> allLines) throws IOException { 
+            
+        String temp;
+        
+        BufferedReader readAll = new BufferedReader
+                    (new FileReader(logFile));
+        while (true){
+            temp = readAll.readLine();
+            if (temp == null)
+                break;
+            allLines.add(temp);
+        }
+        readAll.close();
+    }
+    
     public void setupTimer(){
         tick = TimelineBuilder.create()//creates a new Timeline
             .keyFrames(

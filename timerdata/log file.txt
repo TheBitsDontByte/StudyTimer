@@ -1,24 +1,66 @@
-Date: Oct 29,2016	Duration: 0 hours 0 minutes 18 seconds
-Timer Reset, Oct 29,2016 - Oct 29,2016, 0 hours 0 minutes 26 seconds
-Date: Oct 29,2016	Duration: 0 hours 1 minutes 29 seconds
-Date: Oct 30,2016	Duration: 0 hours 0 minutes 21 second
-Date: Nov 01,2016	Duration: 0 hours 0 minutes 3 seconds
-Timer Reset, Oct 29,2016 - Nov 01,2016, 0 hours 2 minutes 17 seconds
-Timer Reset, Nov 01,2016 - Nov 01,2016, 0 hours 0 minutes 0 seconds
-Date: Nov 01,2016	Duration: 0 hours 0 minutes 6 seconds
-Timer Reset, Nov 01,2016 - Nov 01,2016, 0 hours 0 minutes 6 seconds
-Date: Nov 01,2016	Duration: 0 hours 0 minutes 30 seconds
+Date: Dec 10,2016	Duration: 3 hours 44 minutes 51 seconds
+Date: Dec 09,2016	Duration: 4 hours 22 minutes 15 seconds
+Date: Dec 08,2016	Duration: 5 hours 36 minutes 57 seconds
+Date: Dec 07,2016	Duration: 5 hours 42 minutes 45 seconds
+Date: Dec 06,2016	Duration: 1 hours 17 minutes 15 seconds
+Date: Dec 05,2016	Duration: 4 hours 49 minutes 51 seconds
+Timer Reset, Nov 27,2016 - Dec 05,2016, 29 hours 5 minutes 38 seconds
 
-Timer Reset, Nov 01,2016 - Nov 01,2016, 0 hours 0 minutes 30 seconds
-Date: Nov 01,2016	Duration: 0 hours 0 minutes 8 seconds
-Date: Nov 04,2016	Duration: 0 hours 0 minutes 8 seconds
+Date: Dec 02,2016	Duration: 4 hours 10 minutes 16 seconds
+Date: Dec 01,2016	Duration: 5 hours 26 minutes 11 seconds
+Date: Nov 30,2016	Duration: 5 hours 10 minutes 52 seconds
+Date: Nov 29,2016	Duration: 3 hours 37 minutes 57 seconds
+Date: Nov 28,2016	Duration: 5 hours 49 minutes 5 seconds
+Date: Nov 27,2016	Duration: 4 hours 51 minutes 17 seconds
+Timer Reset, Nov 20,2016 - Nov 27,2016, 14 hours 10 minutes 31 seconds
 
-Date: Nov 04,2016	Duration: 0 hours 0 minutes 1 seconds
+Date: Nov 26,2016	Duration: 3 hours 33 minutes 53 seconds
+Date: Nov 24,2016	Duration: 0 hours 49 minutes 49 seconds
+Date: Nov 23,2016	Duration: 2 hours 54 minutes 23 seconds
+Date: Nov 22,2016	Duration: 2 hours 59 minutes 40 seconds
+Date: Nov 21,2016	Duration: 3 hours 0 minutes 13 seconds
+Date: Nov 20,2016	Duration: 0 hours 52 minutes 27 seconds
+Timer Reset, Nov 15,2016 - Nov 20,2016, 24 hours 0 minutes 1 seconds
 
-Timer Reset, Nov 01,2016 - Nov 04,2016, 0 hours 0 minutes 44 seconds
-Date: Nov 08,2016	Duration: 0 hours 0 minutes 3 seconds
+Date: Nov 20,2016	Duration: 0 hours 50 minutes 1 seconds
+Date: Nov 19,2016	Duration: 2 hours 40 minutes 53 seconds
+Date: Nov 18,2016	Duration: 5 hours 34 minutes 8 seconds
+Date: Nov 17,2016	Duration: 5 hours 2 minutes 47 seconds
+Date: Nov 16,2016	Duration: 4 hours 51 minutes 28 seconds
+Date: Nov 15,2016	Duration: 4 hours 51 minutes 59 seconds
+Timer Reset, Nov 08,2016 - Nov 14,2016, 26 hours 29 minutes 3 seconds
 
-Timer Reset, Nov 04,2016 - Nov 08,2016, 0 hours 0 minutes 3 seconds
-Date: Nov 08,2016	Duration: 0 hours 0 minutes 3 seconds
+Date: Nov 14,2016	Duration: 3 hours 48 minutes 49 seconds
+Date: Nov 13,2016	Duration: 4 hours 38 minutes 53 seconds
+Date: Nov 12,2016	Duration: 5 hours 19 minutes 56 seconds
+Date: Nov 11,2016	Duration: 3 hours 8 minutes 37 seconds
+Date: Nov 10,2016	Duration: 3 hours 17 minutes 25 seconds
+Date: Nov 09,2016	Duration: 3 hours 55 minutes 30 seconds
+Date: Nov 08,2016	Duration: 2 hours 19 minutes 53 seconds
+Timer Reset, Nov 01,2016 - Nov 07,2016, 22 hours 19 minutes 3 seconds
 
-Timer Reset, Nov 07,2016 - Nov 08,2016, 0 hours 0 minutes 4 seconds
+Date: Nov 07,2016	Duration: 4 hours 42 minutes 42 seconds
+Date: Nov 06,2016	Duration: 1 hours 43 minutes 20 seconds
+Date: Nov 05,2016	Duration: 3 hours 7 minutes 29 seconds
+Date: Nov 04,2016	Duration: 3 hours 19 minutes 4 seconds
+Date: Nov 03,2016	Duration: 2 hours 27 minutes 30 seconds
+Date: Nov 02,2016	Duration: 3 hours 20 minutes 54 seconds
+Date: Nov 01,2016	Duration: 3 hours 38 minutes 4 seconds
+Timer Reset, Oct 28,2016 - Nov 01,2016, 11 hours 21 minutes 59 seconds
+
+Date: Nov 01,2016	Duration: 0 hours 11 minutes 27 seconds
+Date: Nov 01,2016	Duration: 0 hours 38 minutes 30 seconds
+Date: Oct 31,2016	Duration: 1 hours 43 minutes 22 seconds
+Date: Oct 30,2016	Duration: 2 hours 02 minutes 1 seconds
+Date: Oct 30,2016	Duration: 2 hours 9 minutes 58 seconds
+Date: Oct 29,2016	Duration: 1 hours 5 minutes 19 seconds
+Date: Oct 29,2016	Duration: 1 hours 25 minutes 56 seconds
+Date: Oct 28,2016	Duration: 2 hours 5 minutes 23 seconds
+Timer Reset, Oct 24,2016 - Oct 28,2016, 10 hours 25 minutes 13 seconds
+---Updating--- Inaccurate Data
+Date: Oct 27,2016	Duration: 3 hours 39 minutes 11 seconds
+Date: Oct 26,2016	Duration: 2 hours 21 minutes 15 seconds
+Date: Oct 26,2016	Duration: 0 hours 38 minutes 44 seconds
+Date: Oct 25,2016	Duration: 1 hours 51 minutes 25 seconds
+Date: Oct 24,2016	Duration: 0 hours 0 minutes 9 seconds
+Initial Log 19th - 24th   12+ Hours
